@@ -1,0 +1,85 @@
+<!-- Industry.html -->
+<div>
+  <div  class="page-header" style="margin-top: -15px;"> 
+    <h1 >Candy Makers</h1>
+    Candy makers can be built by combining their own candy.
+  </div>
+</div>
+<div class="text-center hidden-xs"> 
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">Taffy:</div> <span class="visible-md visible-lg">Taffy:</span> {{items.taffy.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">JellyBeans:</div> <span class="visible-md visible-lg">JellyBeans:</span>  {{items.jellyBean.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">DoughNuts:</div> <span class="visible-md visible-lg">DoughNuts:</span>  {{items.doughNut.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">JawBreakers:</div> <span class="visible-md visible-lg">JawBreakers:</span>  {{items.jawBreaker.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">Peppermint:</div> <span class="visible-md visible-lg">Peppermint:</span>  {{items.peppermint.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">RockCandy:</div> <span class="visible-md visible-lg">RockCandy:</span>  {{items.rockCandy.getCount()| number : 0}} </div> 
+    </div>
+</div>
+
+
+
+<div class="row tight hidden-xs">
+<div ng-repeat="worker in candyPeople | orderBy: 'id'" class="col-md-2 col-sm-4 col-xs-4" style="padding-top: 15px;">
+    <div class="text-center">{{worker.industry.name}} Maker</div>    
+    <img ng-src="images/{{worker.imgName}}.png" src="images/taffy.png" class="img-thumbnail" style="width: 100%;"> 
+    <div class="progress" class="">
+      <div ng-class="{'progress-bar-warning': worker.getCostProgress() < 99, 'progress-bar-success': worker.getCostProgress() == 100}" class="progress-bar" role="progressbar" aria-valuenow="{{worker.getCostProgress()}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': worker.getCostProgress() + '%'}">
+        <span class="sr-only">{{worker.getCostProgress()}}% Complete (warning)</span>
+      </div>
+    </div>
+    <div data-toggle="tooltip" title="{{worker.industry.getCount() == 0 ?'Buy '+ worker.industry.name + ' Candy from the market in order to build': ''}}" > 
+        <button type="button" class="btn btn-default btn-cost" ng-class="{disabled: worker.industry.getCount() == 0}" ng-click="worker.mkTaffyPerson()" style="width: 100%;">Cost: {{worker.getCost()| number: 0}}</button>
+    </div> 
+    <div><span class="field">Population:</span>  {{worker.getCount()| number}} </div>
+    
+ </div>
+</div>
+
+<div class="visible-xs">
+    <div class="row tight">
+        <div ng-repeat="worker in candyPeople | orderBy: 'id'">
+            <div class="well well-sm" style="  overflow: hidden;"> 
+                <div style="width: 30%; float: left; position:relative">
+                    <div class="text-center" style="position: absolute; width: 100%">{{worker.industry.name}}</div> 
+                    <div class="text-center" style="position: absolute; width: 100%; bottom: 0; text-shadow: 1px 1px rgba(171, 171, 171, 0.36);"> {{worker.getCount()| number}}</div>
+                    <div class="text-center ng-hide" style="position: absolute; width: 100%; bottom: -19px; text-shadow: 1px 1px rgba(171, 171, 171, 0.36);"> {{worker.industry.efficiency()| number}}</div>
+                    <img ng-src="images/{{worker.imgName}}.png" src="images/taffy.png" class="img-thumbnail" style="width: 100%;"> 
+                    
+                </div> 
+                <div style="width: 70%; float: left">
+                    <div style="padding: 5px"> 
+                        <h2 class="text-center item-count" style="margin-top:0; margin-bottom: 6px;"> {{worker.industry.getCount()| number : 0}} </h2>
+                        
+                        <button style="width: 100%" type="button" class="btn btn-default btn-cost" ng-class="{disabled: worker.industry.getCount() == 0}" ng-click="worker.mkTaffyPerson()">
+                            Cost: {{worker.getCost()| number: 0}}
+
+                        </button> 
+                        
+                        <div class="progress" class="">
+                          <div ng-class="{'progress-bar-warning': worker.getCostProgress() < 99, 'progress-bar-success': worker.getCostProgress() == 100}" class="progress-bar" role="progressbar" aria-valuenow="{{worker.getCostProgress()}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': worker.getCostProgress() + '%'}">
+                            <span class="sr-only">{{worker.getCostProgress()}}% Complete (warning)</span>
+
+                          </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+</div>

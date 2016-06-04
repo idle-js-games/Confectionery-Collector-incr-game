@@ -1,0 +1,35 @@
+<h1 class="page-header">Production Overview</h1>
+<div class="text-center"> 
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">Taffy:</div> <span class="visible-md visible-lg">Taffy:</span> {{items.taffy.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">JellyBeans:</div> <span class="visible-md visible-lg">JellyBeans:</span>  {{items.jellyBean.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">DoughNuts:</div> <span class="visible-md visible-lg">DoughNuts:</span>  {{items.doughNut.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">JawBreakers:</div> <span class="visible-md visible-lg">JawBreakers:</span>  {{items.jawBreaker.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">Peppermint:</div> <span class="visible-md visible-lg">Peppermint:</span>  {{items.peppermint.getCount()| number : 0}} </div> 
+    </div>
+
+    <div class="col-md-2 col-xs-4"> 
+        <div> <div class="visible-xs visible-sm">RockCandy:</div> <span class="visible-md visible-lg">RockCandy:</span>  {{items.rockCandy.getCount()| number : 0}} </div> 
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-5 col-sm-6"> 
+    <canvas id="radar" class="chart chart-radar" data="data" labels="labels"></canvas> 
+  </div> 
+  <div class="col-md-5 col-sm-6" ng-controller="StockController">
+    <canvas id="line" class="chart chart-line" data="data"
+    labels="labels" legend="true" series="series"></canvas>
+  </div>
+</div>

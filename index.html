@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="marcApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#222">
+    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.png">
+
+
+    <title>Confectionery Collector</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/angular-chart.css" rel="stylesheet" >
+    <link href="css/toastr.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <script src="javascript/vendor/angular.min.js"></script>
+    <script src="javascript/vendor/angular-route.js"></script>
+    <script src="javascript/vendor/chai.js"></script>
+    <script src="app.js"></script>
+    <script src="javascript/service/candyPeople.js"></script>
+    <script src="javascript/market/industry.js"></script>
+    <script src="javascript/service/stats.js"></script>
+    <script src="javascript/service/achievements.js"></script>
+    <script src="javascript/market/market.js"></script>
+    <script src="javascript/achievements/achievements.js"></script>
+    <script src="javascript/upgrades/upgrades.js"></script>
+    <script src="javascript/upgrades/upgradeConstructor.js"></script>
+    <script src="javascript/upgrades/taffyUpgrades.js"></script>
+    <script src="javascript/upgrades/jellyBeanUpgrades.js"></script>
+    <script src="javascript/upgrades/doughNutUpgrades.js"></script>
+    <script src="javascript/upgrades/peppermintUpgrades.js"></script>
+    <script src="javascript/upgrades/jawBreakerUpgrades.js"></script>
+    <script src="javascript/upgrades/rockCandyUpgrades.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-28162659-4', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand hidden-xs" href="#Prisoners">Confectionery Collector</a>
+          <ul class="nav navbar-nav navbar-right visible-xs">
+            <li style="float: right;"><a href="#Achievements"><img src="images/trophy.svg" onerror="this.src='your.png'" style="height:1.2em;"></a></li>
+            <li style="float: right;"><a href="#Industry"><img src="images/scales.svg" onerror="this.src='your.png'" style="height:1.2em;"></span></a></li>
+            
+            <li style="float: right;"><a href="#Overview"><img src="images/histogram.svg" onerror="this.src='your.png'" style="height:1.2em;"></span></a></li>
+
+            <li style="float: right;"><a href="#Prisoners"><img src="images/house.svg" onerror="this.src='your.png'" style="height:1.2em;"></span></a></li>
+
+          </ul>
+        </div>
+
+
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" ng-controller="SideBar">
+          <ul class="nav nav-sidebar">
+            <li ng-class="{active: isActive('/Overview')}"><a href="#Overview">Overview</a></li>
+            <li ng-class="{active: isActive('/Prisoners')|| isActive('/')}"><a href="#Prisoners">Candy Makers</a></li>
+            <li ng-class="{active: isActive('/Industry')}"><a href="#Industry">Market</a></li>
+            <li ng-class="{active: isActive('/Achievements')}"><a href="#Achievements">Achievements</a></li>
+            
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div ng-view></div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="javascript/vendor/jquery.min.js"></script>
+    <script src="javascript/vendor/bootstrap.min.js"></script>
+    <script src="javascript/vendor/Chart.js"></script>
+    <script src="javascript/vendor/angular-chart.js"></script>
+    <script src="javascript/vendor/toastr.min.js"></script>
+    <script src="javascript/vendor/fastclick.js"></script>
+
+  </body>
+</html>
