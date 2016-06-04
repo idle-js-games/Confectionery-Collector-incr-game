@@ -1,0 +1,24 @@
+<!-- Industry.html -->
+
+<div  class="page-header" style="margin-top: -15px;"> 
+    <h1 >Achievements </h1>
+    Modestly long descriptions of achievements. 
+</div>
+
+    <div class="row tight">
+    	<div class="col-md-3" ng-repeat="item in achievements">
+            <div ng-class="{achieved: item.unlocked }"class="well well-sm" style="  overflow: hidden;"> 
+        		<div style="width: 30%; float: left">
+        			<img ng-if="item.unlocked" ng-src="{{item.item.imgfullsrc}}" alt="..." class="achievement-thumb img-circle img-responsive">
+                    <img ng-if="!item.unlocked" ng-src="images/Locked.png" alt="..." class="achievement-thumb img-circle img-responsive">
+        		</div> 
+        		<div style="width: 70%; float: left">
+                    <div style="padding: 5px"> 
+            			<h5> {{item.title}} </h5>
+            			<p> {{item.description}} </p>
+                    </div>
+        		</div>
+            </div> 
+    	</div> 
+    </div>
+

@@ -1,0 +1,64 @@
+<!-- Market.html -->
+<div  class="page-header" style="margin-top: -15px;"> 
+	<h1 >Upgrade Market </h1>
+	Description of modest lenght about upgrades
+</div>
+
+<div class="row tight" style="display:none;"> 
+	<div class="col-md-6" ng-repeat="item in industry"> 
+		<div class="row mellow well well-sm">
+			<div style="width: 20%; float: left">
+				<img ng-src="{{'images/' + item.name + '-CANDY.png'}}" alt="..." class="img-circle img-responsive">
+			</div>
+			<div style="width: 80%; float: left"> 
+				<div  style="width: 100%; padding-top: 0px" >
+					<div class ="col-md-7 col-sm-7 col-xs-7"> 
+						<h4 class="text-left market-field">{{item.name}}</h4>
+						<!-- <h4 class="text-right bottom">1,000/s</h4> -->
+					</div>
+					<div class ="col-md-5 col-sm-5 col-xs-5" style="padding: 0"> 
+						<h4 class="text-right market-field">{{item.getCount() | number : 0}}</h4>
+					</div>
+				</div>
+
+				<div style="width: 100%;">
+					<div class ="col-md-6 col-sm-6 col-xs-6"> 
+						<button type="button" ng-show="buyMultiplier" class="btn btn-default" ng-click="item.buy(buyMultiplier)">
+							Buy {{item.getBuy * buyMultiplier | number : 0}}mg
+						</button>
+
+						<button type="button" ng-hide="buyMultiplier" class="btn btn-default" ng-click="item.buy(getMaxBuy(item))">
+							Buy {{getMaxBuy(item)| number : 0}}x
+						</button>
+					</div>
+					<div class ="col-md-6 col-sm-6 col-xs-6" style="padding-right: 0"> 
+						<div class="pull-right" >
+							<span>{{item.getSell | number: 0}}mg </span>
+							<button type="button" ng-click="item.sell()" class="btn btn-default">Sell</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+</div> 
+
+<div  ng-repeat="item in upgrades | orderBy: 'id'">
+	<button ng-click="item.buy()" ng-hide="item.unlocked" type="button" class="btn btn-default" style="width: 100%;position:relative; margin-bottom: .5em"> 
+		<div style="overflow: visible"> 
+			<div class="h3 upgrade-title text-left">
+				{{item.title}}
+			</div>
+			<div style="top: 0;right: 0;position:absolute;padding: 6px 12px;" class="text-right">
+				<div style="overflow: hidden;">
+					<img ng-src="{{item.industry.imgfullsrc}}" alt="..." class="img-circle img-responsive" style="padding-left: 4px; height:2em; float: right">
+					<div style="font-size: 1.2em;vertical-align: middle; line-height: 1.7em; float: right">{{item.cost | number}}</div>
+				</div>			
+			</div>
+		</div>
+
+		<div class="text-left" style="white-space: normal;"> 
+			{{item.description}}
+		</div>
+	</button>
+</div>

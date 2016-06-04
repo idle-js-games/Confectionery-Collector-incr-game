@@ -1,0 +1,45 @@
+//write code to manage prisoners
+(function(){
+	var buildings = function($http, $interval, industry){
+		var population = 0;
+		var taffyPeople = 0;
+		var CandyFairy = 0;
+
+		var getPopulation = function(){
+			return taffyPeople + CandyFairy
+		}
+
+		var getTaffyPeople = function(){
+			return taffyPeople;
+		}
+
+		var mkTaffyPerson = function(){
+			var taffy = industry.getTaffy();
+			if(taffy >= 10){
+				industry.useTaffy(10)
+				taffyPeople += 1;
+			}
+		}
+		var incrementInterval = $interval(function harvestTaffy(){
+			if(taffyPeople > 0){
+				industry.mkTaffy(taffyPeople)
+			}
+		},
+		100);
+
+		//handlr for adding people. Should be called from industry
+		var addPopulation = function(){
+
+		}
+
+		return {
+			getTaffyPeople: getTaffyPeople,
+			getPopulation: getPopulation,
+			mkTaffyPerson: mkTaffyPerson
+		};
+
+	};
+
+	var module = angular.module("marcApp")
+	module.factory("buildings", buildings)
+}())
